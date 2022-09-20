@@ -103,7 +103,7 @@ DATABASES = {
         'NAME': 'storefront3',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': 'MyPassword'
+        'PASSWORD': 'password'
     }
 }
 
@@ -174,3 +174,6 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1)
 }
+
+
+EMAIL_BACKEND= 'django.core.mail.backends.smtp.EmailBackend'
