@@ -1,12 +1,15 @@
 from django.core.mail import EmailMessage, BadHeaderError
 from django.shortcuts import render
+from templated_mail.mail import BaseEmailMessage
 
 
 def say_hello(request):
     try:
-        message= EmailMessage('subject', 'message', 'store@store.com', ['boy@store.com'])
-        message.attach_file('playground/static/images/truck-kun.jpg')
-        message.send()
+        message=BaseEmailMessage(
+            template_name= 'emails/hello.html',
+            context={'name':'Adekunle'}
+        )
+        message.send(['boy@buy.com'])
 
     except BadHeaderError:
         pass
