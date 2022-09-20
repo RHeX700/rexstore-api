@@ -1,18 +1,9 @@
-from django.core.mail import EmailMessage, BadHeaderError
+from .tasks import notify_customers
 from django.shortcuts import render
-from templated_mail.mail import BaseEmailMessage
 
 
 def say_hello(request):
-    try:
-        message=BaseEmailMessage(
-            template_name= 'emails/hello.html',
-            context={'name':'Adekunle'}
-        )
-        message.send(['boy@buy.com'])
-
-    except BadHeaderError:
-        pass
+    notify_customers.delay('Yo, you good?')
     return render(request, 'hello.html', {'name': 'Adekunle'})
 
 
