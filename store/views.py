@@ -1,3 +1,4 @@
+from queue import Full
 from store.permissions import FullDjangoModelPermissions, IsAdminOrReadOnly, ViewCustomerHistoryPermission
 from store.pagination import DefaultPagination
 from django.db.models.aggregates import Count
@@ -43,7 +44,8 @@ class CollectionViewSet(ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         if Product.objects.filter(collection_id=kwargs['pk']):
-            return Response({'error': 'Collection cannot be deleted because it includes one or more products.'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+            return Response({'error': 'Collection cannot be deleted because it includes one or more products.'},
+             status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
         return super().destroy(request, *args, **kwargs)
 
