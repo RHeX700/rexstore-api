@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'tags',
     'likes',
     'core',
+    'silk'
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
 
 INTERNAL_IPS = [
     # ...
