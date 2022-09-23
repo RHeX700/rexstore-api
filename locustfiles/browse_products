@@ -1,12 +1,10 @@
-from itertools import product
-from unicodedata import name
-from unittest import result
-from urllib import response
-from locust import HttpUser, task
+from locust import HttpUser, task, between
 from random import  randint
 
 
 class WebsiteUser(HttpUser):
+    wait_time =between(1, 5)
+
     @task(2)
     def view_products(self):
         collection_id = randint(2,6)
