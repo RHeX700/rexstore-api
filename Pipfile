@@ -20,6 +20,7 @@ celery = "*"
 flower = "*"
 django-silk = "*"
 django-redis = "*"
+whitenoise = "*"
 
 [dev-packages]
 autopep8 = "*"
